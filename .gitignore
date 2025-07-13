@@ -1,0 +1,159 @@
+# SAR Research Project .gitignore
+
+# ===== 데이터 파일 =====
+# SAR 이미지 데이터 (대용량 파일)
+*.tif
+*.tiff
+*.h5
+*.hdf5
+*.nc
+*.netcdf
+*.bin
+*.raw
+*.slc
+*.dim
+*.data
+
+# Sentinel-1 데이터
+*.SAFE/
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Capella/Umbra 데이터
+*.cos
+*.cos.bz2
+*.cos.gz
+
+# ===== 모델 체크포인트 =====
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+*.pb
+
+# ===== 실험 결과 =====
+experiments/
+runs/
+logs/
+tensorboard_logs/
+wandb/
+
+# ===== 임시 파일 =====
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ===== Python 관련 =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ===== 가상환경 =====
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ===== IDE 설정 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== OS 관련 =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===== Jupyter Notebook =====
+.ipynb_checkpoints
+
+# ===== 데이터베이스 =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== 로그 파일 =====
+*.log
+logs/
+
+# ===== 메모리 덤프 =====
+*.dmp
+*.hprof
+
+# ===== 특정 디렉토리 제외 =====
+# HR 메타데이터만 포함하고 나머지는 제외
+data/
+datasets/
+raw_data/
+processed_data/
+metadata/
+!metadata/HR/
+
+# ===== 예외: HR 메타데이터만 포함 =====
+!metadata/HR/
+!metadata/HR/**/*
+!*.json
+!*.csv
+!*.xml
+!*.txt
+
+# ===== DVC 관련 =====
+.dvc/
+.dvcignore
+
+# ===== 기타 =====
+# 대용량 파일 (100MB 이상)
+*.large
+*.huge
+
+# ===== 프로젝트 특화 =====
+# SAR 전처리 중간 결과물
+*_calibrated.tif
+*_ortho.tif
+*_mosaic.tif
+
+# QGIS 프로젝트 파일
+*.qgz
+*.qgs
+
+# GDAL 가상 래스터
+*.vrt
+
+# ===== 보안 관련 =====
+# API 키나 민감한 정보
+.env
+config.ini
+secrets.json
+*.key
+*.pem 
