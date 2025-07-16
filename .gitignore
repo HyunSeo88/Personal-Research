@@ -119,10 +119,9 @@ raw_data/
 processed_data/
 metadata/
 !metadata/HR/
-
-# ===== 예외: HR 메타데이터만 포함 =====
-!metadata/HR/
 !metadata/HR/**/*
+
+# ===== 메타데이터 파일 포함 =====
 !*.json
 !*.csv
 !*.xml
@@ -156,4 +155,14 @@ metadata/
 config.ini
 secrets.json
 *.key
-*.pem 
+*.pem
+
+# ===== 프로젝트 생성 파일 =====
+# 필터링 결과
+filtered_metadata*.csv
+filtered_data_analysis.png
+
+# Python 스크립트 (선택적 - 필요시 주석 해제)
+# metadata_filter*.py
+# visualize_results.py 
+*.zip

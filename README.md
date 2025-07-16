@@ -203,7 +203,7 @@ Personal Research/
    ```bash
    conda create -n sar-sr python=3.10
    conda activate sar-sr
-   pip install torch torchvision torch-complex
+   pip install torch torchvision torch-complex pandas numpy
    ```
 
 2. **데이터 준비**
@@ -221,3 +221,44 @@ Personal Research/
 - [Capella Space](https://www.capellaspace.com/)
 - [Umbra Lab](https://umbra.space/)
 - [Sentinel-1 ESA](https://sentinel.esa.int/web/sentinel/missions/sentinel-1)
+
+---
+
+## 🔧 메타데이터 필터링 도구
+
+연구에 적합한 SAR 데이터를 선별하기 위한 Python 도구들이 `data processing/selection/` 디렉토리에 위치
+
+### 통합 필터링 (`integrated_sar_metadata_filter.py`)
+```bash
+cd "data processing/selection"
+python integrated_sar_metadata_filter.py
+```
+
+**주요 기능:**
+- Umbra와 Capella 데이터 통합 분석
+- 한국 지역 데이터 자동 필터링
+- 연구 우선순위 데이터 선별
+
+### Capella 전용 필터링 (`metadata_filter_capella.py`)
+```bash
+cd "data processing/selection"
+python metadata_filter_capella.py --capella-dir ../../metadata/HR/capella_data
+```
+
+**필터링 조건:**
+- ✅ **필수**: 지리적 위치, 해상도(<1m), 극화(VV/HH), 입사각(25-45°)
+- ⚡ **선택**: 노이즈 레벨, 수집 날짜, 파일 크기
+
+### 현재 데이터 현황 (2025년 1월 기준)
+- **전체 데이터**: 200개 (한국 확장 지역)
+  - **Umbra**: 188개 (우수한 커버리지)
+  - **Capella**: 12개
+- **연구 우선순위**: 189개 (해상도 <1m, 2023년 이후)
+- **최고 해상도**: 0.047m (Capella, 북한 지역)
+- **주요 타겟**: 평양, 인천공항, 서해 위성발사장 등
+
+### 생성된 결과 파일
+- `korea_region_sar_metadata.csv`: 전체 한국 지역 데이터 (200개)
+- `korea_research_priority.csv`: 연구 우선순위 데이터 (189개)
+- `capella_asia_full.csv`: Capella 아시아 전체 데이터
+- `capella_korea_nearby_all.csv`: Capella 한국 근처 데이터
